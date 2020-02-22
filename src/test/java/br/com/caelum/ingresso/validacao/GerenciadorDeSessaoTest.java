@@ -53,7 +53,7 @@ public class GerenciadorDeSessaoTest {
 		List<Sessao> sessoesDaSala = Arrays.asList(sessaoDasDez);
 		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoesDaSala);
 		Sessao sessao = new Sessao(sessaoDasDez.getHorario().plusHours(1), rogueOne, sala3D);
-		Assert.assertFalse(gerenciador.cabe(sessaoDasDez));
+		Assert.assertFalse(gerenciador.cabe(sessao));
 	}
 	
 	@Test
