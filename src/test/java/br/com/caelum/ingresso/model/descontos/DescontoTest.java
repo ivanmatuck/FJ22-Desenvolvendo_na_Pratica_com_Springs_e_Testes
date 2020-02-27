@@ -16,7 +16,7 @@ public class DescontoTest {
 	@Test
 	public void naoDeveConcederDescontoParaIngressoNormal() {
 		Sala sala = new Sala("Eldorado	-	IMAX", new BigDecimal("20.5"));
-		Filme filme = new Filme("Rogue	One", Duration.ofMinutes(120), "SCI-FI", new BigDecimal("12"));
+		Filme filme = new Filme("Rogue	One", Duration.ofMinutes(120), "SCI-FI", new BigDecimal("12.0"));
 		
 		Sessao sessao = new Sessao(LocalTime.parse("10:00:00"), filme, sala);
 		Ingresso ingresso = new Ingresso(sessao, new SemDesconto());
