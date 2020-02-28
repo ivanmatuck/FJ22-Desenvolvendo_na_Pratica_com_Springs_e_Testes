@@ -28,9 +28,9 @@
 
 	<bean id="mysqlDS" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="username" value="root"/>
-		<property name="password" value=""/>
-		<property name="url" value="jdbc:mysql://localhost/ingresso?createDatabaseIfNotExist=true&amp;useSSL=false"/>
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="password" value="Fam04131930*"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/ingresso?useTimezone=true&amp;serverTimezone=UTC;createDatabaseIfNotExist=true&amp;useSSL=false"/>
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
 	</bean>
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
