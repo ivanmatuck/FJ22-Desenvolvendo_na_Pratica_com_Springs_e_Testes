@@ -13,12 +13,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
     </properties>
 
 
     <dependencies>
+  
 
 	<dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
@@ -109,7 +110,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.40</version>
+            <version>8.0.15</version>
         </dependency>
 
         <dependency>
@@ -137,14 +138,25 @@
     	</dependency>
     
     </dependencies>
+    
+    
     <build>
         <finalName>ingresso</finalName>
         <plugins>
 
+	        <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>3.2.3</version>
+<!-- 		        <configuration> -->
+<!--           			<webappDirectory>target/fj22-ingressos</webappDirectory> -->
+<!--         		</configuration> -->
+	        </plugin>
+	        
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerArgs>
                         <arg>-parameters</arg>
@@ -155,7 +167,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.0.v20161208</version>
+                <version>9.4.26.v20200117</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                 </configuration>

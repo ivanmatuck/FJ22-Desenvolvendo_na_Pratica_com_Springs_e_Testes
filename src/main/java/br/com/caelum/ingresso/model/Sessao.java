@@ -1,7 +1,6 @@
 package br.com.caelum.ingresso.model;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
@@ -60,8 +59,19 @@ public class Sessao {
 		this.preco = sala.getPreco().add(filme.getPreco());
 	}
 
+	
+    
+//  public BigDecimal getPreco() {
+//  	return preco.setScale(2, RoundingMode.HALF_UP);
+//  }
+//  
+//  public void setPreco(BigDecimal preco) {
+//  	this.preco = preco;
+//  }
+  
+
 	public BigDecimal getPreco() {
-		return preco.setScale(2, RoundingMode.HALF_UP);
+		return preco;
 	}
 
 	public void setPreco(BigDecimal preco) {

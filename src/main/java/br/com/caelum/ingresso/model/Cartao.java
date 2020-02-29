@@ -8,10 +8,6 @@ public class Cartao {
 	private Integer cvv;
 	private YearMonth vencimento;
 
-	public boolean isValido() {
-		return vencimento.isAfter(YearMonth.now());
-	}
-
 	public String getNumero() {
 		return numero;
 	}
@@ -34,6 +30,10 @@ public class Cartao {
 
 	public void setVencimento(YearMonth vencimento) {
 		this.vencimento = vencimento;
+	}
+	
+	public boolean isValido() {
+		return vencimento.isAfter(YearMonth.now());
 	}
 
 }

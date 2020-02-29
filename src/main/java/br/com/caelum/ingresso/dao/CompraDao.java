@@ -9,6 +9,7 @@ import br.com.caelum.ingresso.model.Compra;
 
 @Repository
 public class CompraDao {
+	
 	@PersistenceContext
 	private EntityManager manager;
 

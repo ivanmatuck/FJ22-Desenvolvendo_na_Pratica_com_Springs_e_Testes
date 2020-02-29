@@ -3,7 +3,7 @@ package br.com.caelum.ingresso.converter;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 
-import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.converter.*;
 
 public class YearMonthConverter implements Converter<String, YearMonth> {
 	
