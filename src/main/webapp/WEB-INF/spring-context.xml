@@ -25,11 +25,11 @@
 	
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
-		<set>
-		<bean class="br.com.caelum.ingresso.converter.YearMonthConverter"/>
-		</set>
+			<set>
+			<bean class="br.com.caelum.ingresso.converter.YearMonthConverter"/>
+			</set>
 		</property>
-		</bean>
+	</bean>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
