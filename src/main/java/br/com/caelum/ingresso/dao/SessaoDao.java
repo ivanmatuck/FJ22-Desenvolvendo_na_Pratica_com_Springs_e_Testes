@@ -20,6 +20,10 @@ public class SessaoDao {
 	public void save(Sessao sessao) {
 		manager.persist(sessao);
 	}
+	
+	public	Sessao	findOne(Integer	id)	{
+		return	manager.find(Sessao.class,	id);
+	}
 
 	public List<Sessao> buscaSessoesDaSala(Sala sala) {
 		return manager.createQuery("select s from Sessao s where s.sala = :sala", Sessao.class)
