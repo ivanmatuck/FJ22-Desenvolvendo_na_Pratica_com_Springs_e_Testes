@@ -1,6 +1,3 @@
-Um designer formado em marketing que está virando desenvolvedor.
+Desenvolvedor FullStack Jr.
 
-
-
-
-Já fui gráfico, retocador de images, produtor gráfico, designer e agora sou aprendiz de programação, dedicado e apaixonado.
+Já fui gráfico, retocador de images, produtor gráfico, designer e agora estou focado em me tornar um desenvolvedor cada dia melhor.
