@@ -27,7 +27,7 @@ public class Compra {
 	}
 
 	public Compra(List<Ingresso> ingressos) {
-		this.ingressos = ingressos;
+		ingressos.forEach(this.ingressos::add);
 	}
 
 	public Long getId() {
@@ -45,6 +45,8 @@ public class Compra {
 	public void setIngressos(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
 	}
+
+	
 
 	
 }

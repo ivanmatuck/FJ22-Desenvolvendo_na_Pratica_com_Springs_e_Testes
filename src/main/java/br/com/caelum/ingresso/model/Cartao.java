@@ -7,7 +7,14 @@ public class Cartao {
 	private String numero;
 	private Integer cvv;
 	private YearMonth vencimento;
-
+	
+	
+	//métodos
+	public boolean isValido() {
+		return vencimento.isAfter(YearMonth.now());
+	}
+	
+	//getters and setters
 	public String getNumero() {
 		return numero;
 	}
@@ -30,9 +37,5 @@ public class Cartao {
 
 	public void setVencimento(YearMonth vencimento) {
 		this.vencimento = vencimento;
-	}
-
-	public boolean isValido() {
-		return vencimento.isAfter(YearMonth.now());
 	}
 }

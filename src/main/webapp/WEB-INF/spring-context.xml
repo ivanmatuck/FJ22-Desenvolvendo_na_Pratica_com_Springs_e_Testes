@@ -17,12 +17,11 @@
 
 	<jpa:repositories base-package="br.com.caelum.ingresso" />
 	
-	<mvc:annotation-driven conversion-service="conversionService"/>
 
 	<context:component-scan base-package="br.com.caelum.ingresso" />
-	<mvc:annotation-driven />
 	<mvc:default-servlet-handler/>
-	
+	<mvc:annotation-driven conversion-service="conversionService"/>
+		
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>

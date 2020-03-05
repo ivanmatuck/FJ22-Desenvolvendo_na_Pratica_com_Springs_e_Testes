@@ -20,6 +20,7 @@ import br.com.caelum.ingresso.model.form.CarrinhoForm;
 @Controller
 public class CompraController {
 
+	//atributos
 	@Autowired
 	private SessaoDao sessaoDao;
 
@@ -31,7 +32,44 @@ public class CompraController {
 
 	@Autowired
 	private CompraDao compraDao;
+	
+	//getters and setters
+	public SessaoDao getSessaoDao() {
+		return sessaoDao;
+	}
+	
+	public void setSessaoDao(SessaoDao sessaoDao) {
+		this.sessaoDao = sessaoDao;
+	}
+	
+	public LugarDao getLugarDao() {
+		return lugarDao;
+	}
+	
+	public void setLugarDao(LugarDao lugarDao) {
+		this.lugarDao = lugarDao;
+	}
+	
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+	
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
 
+	//métodos
+	
+	//action para URI /compra/ingressos
+	@PostMapping("/compra/ingressos")
+	public ModelAndView enviarParaPagamento(CarrinhoForm carrinhoForm) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/compra");
+		
+		carrinhoForm.toIngressos(sessaoDao, lugarDao).forEach(carrinho::add);
+		
+		return modelAndView;
+	}
+	
 	@PostMapping("/compra/comprar")
 	@Transactional
 	public ModelAndView comprar(@Valid Cartao cartao, BindingResult result) {
@@ -51,37 +89,6 @@ public class CompraController {
 		ModelAndView modelAndView = new ModelAndView("compra/pagamento");
 		modelAndView.addObject("carrinho", carrinho);
 		return modelAndView;
-	}
-
-	@PostMapping("/compra/ingressos")
-	public ModelAndView enviarParaPagamento(CarrinhoForm carrinhoForm) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/compra");
-		carrinhoForm.toIngressos(sessaoDao, lugarDao).forEach(carrinho::add);
-		return modelAndView;
-	}
-
-	public SessaoDao getSessaoDao() {
-		return sessaoDao;
-	}
-
-	public void setSessaoDao(SessaoDao sessaoDao) {
-		this.sessaoDao = sessaoDao;
-	}
-
-	public LugarDao getLugarDao() {
-		return lugarDao;
-	}
-
-	public void setLugarDao(LugarDao lugarDao) {
-		this.lugarDao = lugarDao;
-	}
-
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
 	}
 
 }

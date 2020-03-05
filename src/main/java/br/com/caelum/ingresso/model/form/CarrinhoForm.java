@@ -12,26 +12,33 @@ import br.com.caelum.ingresso.model.Sessao;
 import br.com.caelum.ingresso.model.TipoDeIngresso;
 
 public class CarrinhoForm {
-
+	
+	//atributos
 	private List<Ingresso> ingressos = new ArrayList<>();
-
+	
+	//getters and setters
 	public List<Ingresso> getIngressos() {
 		return ingressos;
 	}
-
+	
 	public void setIngressos(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
 	}
 
+	
+	//métodos
+	
+	//retorna uma lista de ingressos válidos
 	public List<Ingresso> toIngressos(SessaoDao sessaoDao, LugarDao lugarDao) {
+		
 		return this.ingressos.stream().map(ingresso -> {
 			Sessao sessao = sessaoDao.findOne(ingresso.getSessao().getId());
 			Lugar lugar = lugarDao.findOne(ingresso.getLugar().getId());
 			TipoDeIngresso tipoDeIngresso = ingresso.getTipoDeIngresso();
+			
 			return new Ingresso(sessao, tipoDeIngresso, lugar);
 		}).collect(Collectors.toList());
 	}
-	
 	
 
 }

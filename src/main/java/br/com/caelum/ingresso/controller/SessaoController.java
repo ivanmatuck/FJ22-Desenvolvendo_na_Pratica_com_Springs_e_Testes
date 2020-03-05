@@ -29,6 +29,7 @@ import br.com.caelum.ingresso.validacao.GerenciadorDeSessao;
 @Controller
 public class SessaoController {
 
+	//atributos
 	@Autowired
 	private SalaDao salaDao;
 
@@ -44,48 +45,67 @@ public class SessaoController {
 	@Autowired
 	private Carrinho carrinho;
 	
-	
-
+	//getters and setters
 	public SalaDao getSalaDao() {
 		return salaDao;
 	}
-
+	
 	public void setSalaDao(SalaDao salaDao) {
 		this.salaDao = salaDao;
 	}
-
+	
 	public FilmeDao getFilmeDao() {
 		return filmeDao;
 	}
-
+	
 	public void setFilmeDao(FilmeDao filmeDao) {
 		this.filmeDao = filmeDao;
 	}
-
+	
 	public SessaoDao getSessaoDao() {
 		return sessaoDao;
 	}
-
+	
 	public void setSessaoDao(SessaoDao sessaoDao) {
 		this.sessaoDao = sessaoDao;
 	}
-
+	
 	public OmdbClient getClient() {
 		return client;
 	}
-
+	
 	public void setClient(OmdbClient client) {
 		this.client = client;
 	}
-
+	
 	public Carrinho getCarrinho() {
 		return carrinho;
 	}
-
+	
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
 	}
-
+	
+	//métodos
+	
+	//disponibiliza o carrinho para seleção de lugares
+	@GetMapping("/sessao/{id}/lugares")
+	public ModelAndView lugaresNaSessao(@PathVariable("id") Integer sessaoId) {
+		
+		ModelAndView modelAndView = new ModelAndView("sessao/lugares");
+		
+		Sessao sessao = sessaoDao.findOne(sessaoId);
+		
+		Optional<ImagemCapa> imagemCapa = client.request(sessao.getFilme(), ImagemCapa.class);
+		
+		modelAndView.addObject("sessao", sessao);
+		modelAndView.addObject("imagemCapa", imagemCapa.orElse(new ImagemCapa()));
+		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
+		
+		return modelAndView;
+	}
+	
+	
 	@GetMapping("/admin/sessao")
 	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
 
@@ -115,22 +135,6 @@ public class SessaoController {
 			return new ModelAndView("redirect:/admin/sala/" + form.getSalaId() + "/sessoes");
 		}
 		return form(form.getSalaId(), form);
-	}
-
-	@GetMapping("/sessao/{id}/lugares")
-	public ModelAndView lugaresNaSessao(@PathVariable("id") Integer sessaoId) {
-		
-		ModelAndView modelAndView = new ModelAndView("sessao/lugares");
-		
-		Sessao sessao = sessaoDao.findOne(sessaoId);
-		
-		Optional<ImagemCapa> imagemCapa = client.request(sessao.getFilme(), ImagemCapa.class);
-		
-		modelAndView.addObject("sessao", sessao);
-		modelAndView.addObject("imagemCapa", imagemCapa.orElse(new ImagemCapa()));
-		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
-		
-		return modelAndView;
 	}
 
 }
