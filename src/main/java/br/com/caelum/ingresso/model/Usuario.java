@@ -17,6 +17,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Usuario implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	// atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,5 +81,35 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(Set<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 
 }

@@ -43,8 +43,10 @@
                 </div>
 
                 <button class="btn btn-primary" type="submit">Entrar</button>
+                
+                <a href="/usuario/request">ou cadastrar-se</a>
 
-                <a href="/usuario">ou cadastrar-se</a>
+                
             </form>
         </div>
     </jsp:body>
